@@ -1,0 +1,3 @@
+[submodule "emacsdotd"]
+	path = emacsdotd
+	url = git@github.com:solarce/emacsdotd.git
