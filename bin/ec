@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#  spawns emacsclient and the input will be sent to one or more new buffers 
+## in the existing Cocoa client frame, will fall back to invoking emacsc to 
+## create a fresh Cocoa gui if one is not open.
+
+set -e
+EMACSCLIENT=/Users/bburton/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+exec $EMACSCLIENT -a ~/bin/emacsc "$@"

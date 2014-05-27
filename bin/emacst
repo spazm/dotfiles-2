@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# this will start a standalone emacs with the terminal interface
+## can't say I'll use it much but here it is
+
+set -e
+/Users/bburton/Applications/Emacs.app/Contents/MacOS/Emacs -nw "$@"

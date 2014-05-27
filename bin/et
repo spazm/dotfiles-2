@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#  starts an emacs terminal gui but connects to the running 
+## emacs cocoa gui's server, if no server is running it falls
+## back to just running a standalone terminal gui
+
+set -e
+EMACSCLIENT=/Users/bburton/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+exec $EMACSCLIENT -t -a ~/bin/emacst "$@"
