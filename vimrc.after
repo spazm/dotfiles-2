@@ -1,0 +1,27 @@
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F2> :NERDTreeFind<CR>
+
+map <F2> :NERDTreeToggle<CR>
+
+set number
+nnoremap <F3> :set nonumber!<CR>
+
+syntax enable
+set background=dark
+colorscheme solarized
+
+function! s:CloseIfOnlyControlWinLeft()
+  if winnr("$") != 1
+    return
+  endif
+  if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+        \ || &buftype == 'quickfix'
+    q
+  endif
+endfunction
+augroup CloseIfOnlyControlWinLeft
+  au!
+  au BufEnter * call s:CloseIfOnlyControlWinLeft()
+augroup END
+
+set shell=/bin/bash
