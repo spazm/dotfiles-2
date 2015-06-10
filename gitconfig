@@ -11,5 +11,7 @@
 	cia = commit -a
 	ci = commit
 	p = push
+	cl = clone
+	pf = pull
 [push]
 	default = simple
