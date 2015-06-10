@@ -12,6 +12,6 @@
 	ci = commit
 	p = push
 	cl = clone
-	pf = pull
+	pf = pull --ff-only
 [push]
 	default = simple
