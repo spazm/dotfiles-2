@@ -1,9 +1,0 @@
-#!/bin/sh
-
-#  spawns emacsclient and the input will be sent to one or more new buffers
-## but doesn't wait for exit
-## emacs client no wait
-
-set -e
-EMACSCLIENT=/Users/bburton/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
-exec $EMACSCLIENT -n -a ~/bin/emacsc "$@"

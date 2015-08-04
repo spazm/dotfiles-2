@@ -1,15 +1,26 @@
+" my ~/.vimrc.after
+
+set wrap
+set linebreak
+set textwidth=0
+set wrapmargin=0
+
+" some handy nerdtree shortcuts
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F2> :NERDTreeFind<CR>
-
 map <F2> :NERDTreeToggle<CR>
 
+" make it easy to toggle line numbers on and off
 set number
 nnoremap <F3> :set nonumber!<CR>
 
+" set theme to solarized dark
 syntax enable
 set background=dark
 colorscheme solarized
 
+" function to get rid of nerdtree if it's the only window left
+" and then exit
 function! s:CloseIfOnlyControlWinLeft()
   if winnr("$") != 1
     return
@@ -24,4 +35,8 @@ augroup CloseIfOnlyControlWinLeft
   au BufEnter * call s:CloseIfOnlyControlWinLeft()
 augroup END
 
+" set shell to bash
 set shell=/bin/bash
+
+" custom highlighting
+au BufRead,BufNewFile *.zsh-theme set filetype=zsh

@@ -1,8 +1,0 @@
-#!/bin/sh
-
-#  this will invoke a new Cocoa gui if one is not running, otherwise
-## it will start a new gui, it's not really meant for use except
-## as the fallback for `ec`
-
-set -e
-/Users/bburton/Applications/Emacs.app/Contents/MacOS/Emacs "$@"

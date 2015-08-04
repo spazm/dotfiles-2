@@ -2,7 +2,10 @@
 	name = Brandon Burton
 	email = brandon@inatree.org
 [alias]
+  branch-name = "!git rev-parse --abbrev-ref HEAD"
 	co = checkout
+  cm = "checkout master"
+  cb = checkout -b
 	st = status
 	br = branch
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -10,8 +13,14 @@
 	a = add
 	cia = commit -a
 	ci = commit
-	p = push
+  c = commit
+	pu = push
+  pub = "!git push -u origin $(git branch-name)"
+  pl = pull
 	cl = clone
 	pf = pull --ff-only
+  pt = push --tags
+	d = diff
+	ds = diff --staged
 [push]
 	default = simple

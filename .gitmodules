@@ -1,3 +1,0 @@
-[submodule "fish"]
-	path = fish
-	url = git@github.com:solarce/dotfiles-fish.git
