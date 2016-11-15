@@ -1,5 +1,54 @@
 " my ~/.vimrc.after
 
+""
+"" Janus setup
+""
+
+" Define paths
+let g:janus_path = expand("~/.vim/janus/vim")
+let g:janus_vim_path = expand("~/.vim/janus/vim")
+let g:janus_custom_path = expand("~/.janus")
+
+" Source janus's core
+exe 'source ' . g:janus_vim_path . '/core/before/plugin/janus.vim'
+
+" You should note that groups will be processed by Pathogen in reverse
+" order they were added.
+call janus#add_group("tools")
+call janus#add_group("langs")
+call janus#add_group("colors")
+
+""
+"" Customisations
+""
+
+if filereadable(expand("~/.vimrc.before"))
+  source ~/.vimrc.before
+endif
+
+
+" Disable plugins prior to loading pathogen
+exe 'source ' . g:janus_vim_path . '/core/plugins.vim'
+
+""
+"" Pathogen setup
+""
+
+" Load all groups, custom dir, and janus core
+call janus#load_pathogen()
+
+" .vimrc.after is loaded after the plugins have loaded
+
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme="luna"
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 set wrap
 set linebreak
 set textwidth=0
@@ -14,10 +63,12 @@ map <F2> :NERDTreeToggle<CR>
 set number
 nnoremap <F3> :set nonumber!<CR>
 
-" set theme to solarized dark
+
+
+" set theme to molokai
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme jellybeans
 
 " function to get rid of nerdtree if it's the only window left
 " and then exit
