@@ -5,6 +5,7 @@
   branch-name = "!git rev-parse --abbrev-ref HEAD"
 	co = checkout
   cm = "checkout master"
+  cgh = "checkout gh-pages"
   cb = checkout -b
 	st = status
 	br = branch
