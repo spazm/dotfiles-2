@@ -18,3 +18,5 @@ pandoc \
   -t markdown \
   "$DOCNAME" \
   -o "$DOCNAME_MD"
+
+echo "$DOCNAME_MD has been generated for you. 🔮"
