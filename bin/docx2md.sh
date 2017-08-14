@@ -31,7 +31,9 @@ convert_doc() {
     -t markdown \
     "$DOCNAME" \
     -o "$DOCNAME_MD"
+    echo "$DOCNAME_MD has been generated for you. 🔮"
 }
+
 
 check_pandoc
 if [ $# -eq 0 ]; then
