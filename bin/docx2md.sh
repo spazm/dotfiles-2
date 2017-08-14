@@ -1,20 +1,42 @@
 #!/usr/bin/env bash
+                                                                                
+usage() {
+  echo "Usage: $0 [docx filenames]"
+  echo ""
+  echo "Converts docx files created by google doc into markdown via pandoc"
+  exit 2
+}
 
-if [[ ! $(which pandoc) ]]; then
-  echo "Please install pandoc from https://pandoc.org/installing.html"
-  exit 1
-elif [[ -z $1 ]]; then
-  echo "Please provide the name of the .docx file you wish to convert to Markdown"
-  echo "E.g. \`~/bin/docx2md foobar.dox\`"
-  exit 1
+# check for pandoc.
+#   Uses posix specified `command -v` for portability and to avoid a subshell.
+check_pandoc() {
+  command -v pandoc >/dev/null 2>&1 || \
+    { 
+      echo "Please install pandoc from https://pandoc.org/installing.html" ;
+      exit 1
+    }
+}
+
+# convert one docx to markdown.
+#   output filename is input ".docx" with suffix removed if present
+#   and ".md" appended.
+convert_doc() {
+  DOCNAME="$1"
+  # ${FOO%BAR} returns $FOO, removing BAR if present on the right end of string
+  DOCNAME_MD="${DOCNAME%.docx}.md"
+  
+  pandoc \
+    --wrap=preserve \
+    -f docx \
+    -t markdown \
+    "$DOCNAME" \
+    -o "$DOCNAME_MD"
+}
+
+check_pandoc
+if [ $# -eq 0 ]; then
+  usage
 fi
-
-DOCNAME=$1
-DOCNAME_MD="$(echo $DOCNAME |  sed 's/docx/md/')"
-
-pandoc \
-  --wrap=preserve \
-  -f docx \
-  -t markdown \
-  "$DOCNAME" \
-  -o "$DOCNAME_MD"
+for doc in "$@"; do
+  convert_doc "$doc"
+done
